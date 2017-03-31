@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.shengyuan.projects:sy-tools:1.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/shengyuan/projects/sy-tools/1.0.0-SNAPSHOT/sy-tools-1.0.0-20170328.095238-73.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/shengyuan/projects/sy-tools/1.0.0-SNAPSHOT/sy-tools-1.0.0-20170328.095238-73-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/shengyuan/projects/sy-tools/1.0.0-SNAPSHOT/sy-tools-1.0.0-20170328.095238-73-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

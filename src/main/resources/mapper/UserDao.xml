@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.zz.dao.UserDao">
+
+    <select id="findByUsername" parameterType="String" resultType="User">
+        select * from t_user where username = #{username}
+    </select>
+
+    <update id="update" parameterType="java.util.Map">
+        update t_user set modify_time = #{user.modifyTime}
+        <if test="user.isLocked != null">
+            ,is_locked = #{user.isLocked}
+        </if>
+        <if test="user.lockedDate != null">
+            ,locked_date = #{user.lockedDate}
+        </if>
+        <if test="user.loginDate != null">
+            ,login_date = #{user.loginDate}
+        </if>
+        <if test="user.loginFailureCount != nulll">
+            ,login_failure_count = #{user.loginFailureCount}
+        </if>
+        <if test="user.loginIp != null">
+            ,login_ip = #{user.loginIp}
+        </if>
+        <if test="user.isEnabled != null">
+            ,is_enabled = #{user.isEnabled}
+        </if>
+        <if test="user.name != null">
+            ,name = #{user.name}
+        </if>
+        <if test="user.password != null">
+            ,password = #{user.password}
+        </if>
+        <if test="user.salt != null">
+            ,salt = #{user.salt}
+        </if>
+        <if test="user.username != null">
+            ,username = #{user.username}
+        </if>
+        where id = #{user.id}
+    </update>
+
+</mapper>
