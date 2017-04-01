@@ -16,7 +16,7 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService {
 
-
+    @Resource
     private UserDao userDao;
 
     @Override
@@ -31,7 +31,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<String> findUserPermissions(Long userId) {
-       return userDao.findUserPermissions(userId);
+        List<String> result = userDao.findUserPermissions(userId);
+        return result;
     }
 
     @Override

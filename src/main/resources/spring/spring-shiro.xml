@@ -29,11 +29,7 @@
         <property name="unauthorizedUrl" value="/admin/common/unauthorized.jhtml" />
         <property name="filterChainDefinitions">
             <value>
-                /admin/ = anon
-                /login.jsp = authc
-                /logout.jsp = logout
-                /admin/common/captchaImage.jhtml = anon
-                /order/printReport/** = anon
+                /** = anon
             </value>
         </property>
         <property name="filters">

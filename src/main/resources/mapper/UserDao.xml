@@ -327,14 +327,14 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="findByUsername" parameterType="java.lang.String">
+  <select id="findByUsername" parameterType="java.lang.String" resultType="top.zz.model.User">
     select
     <include refid="Base_Column_List" />
     from CURRENT_USER
     where username = #{username,jdbcType=VARCHAR}
   </select>
 
-  <select id="findUserPermissions" parameterType="java.lang.Long">
+  <select id="findUserPermissions" parameterType="java.lang.Long" resultType="java.lang.String">
     select p.permission from t_user u
       inner join t_user_role ur on u.id = ur.uid
       inner join t_role_permission rp on rp.role_id = ur.role_id
@@ -342,7 +342,7 @@
     where u.id = #{userId,jdbcType=BIGINT}
   </select>
 
-  <select id="findUserRoles" parameterType="java.lang.Long">
+  <select id="findUserRoles" parameterType="java.lang.Long" resultType="java.lang.String">
     select r.role from t_user u
       inner join t_user_role ur on u.id = ur.uid
       inner join t_role r on r.id = ur.role_id

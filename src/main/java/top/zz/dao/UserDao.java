@@ -30,7 +30,7 @@ public interface UserDao {
 
     User findByUsername(@Param("username") String username);
 
-    List<String> findUserPermissions(Long userId);
+    List<String> findUserPermissions(@Param("userId") Long userId);
 
-    List<String> findUserRoles(Long userId);
+    List<String> findUserRoles(@Param("userId") Long userId);
 }
