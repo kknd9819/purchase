@@ -7,6 +7,7 @@ import top.zz.service.UserService;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Resource
+
     private UserDao userDao;
 
     @Override
@@ -24,9 +25,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(User user) {
-        Map<String,Object> map = new HashMap<String,Object>();
-        map.put("user",user);
-        userDao.update(map);
+    public int update(User user) {
+        return userDao.updateByPrimaryKeySelective(user);
+    }
+
+    @Override
+    public List<String> findUserPermissions(Long userId) {
+       return userDao.findUserPermissions(userId);
+    }
+
+    @Override
+    public List<String> findUserRoles(Long userId) {
+        return userDao.findUserRoles(userId);
     }
 }

@@ -61,10 +61,10 @@ public class AuthenticationRealm extends AuthorizingRealm {
 			if (user == null) {
 				throw new UnknownAccountException();
 			}
-			if (!user.getEnabled()) {
+			if (!user.getIsEnabled()) {
 				throw new DisabledAccountException();
 			}
-			if (user.getLocked()) {
+			if (user.getIsLocked()) {
 				int loginFailureLockTime = 10;
 				if (loginFailureLockTime == 0) {
 					throw new LockedAccountException();
@@ -72,9 +72,8 @@ public class AuthenticationRealm extends AuthorizingRealm {
 				Date lockedDate = user.getLockedDate();
 				Date unlockDate = DateUtils.addMinutes(lockedDate, loginFailureLockTime);
 				if (new Date().after(unlockDate)) {
-					user.setModifyTime(new Date());
 					user.setLoginFailureCount(0);
-					user.setLocked(false);
+					user.setIsLocked(false);
 					user.setLockedDate(null);
 					userService.update(user);
 				} else {
@@ -84,18 +83,16 @@ public class AuthenticationRealm extends AuthorizingRealm {
 			if (!DigestUtils.md5Hex(password).equals(user.getPassword())) {
 				int loginFailureCount = user.getLoginFailureCount() + 1;
 				if (loginFailureCount >= 5) {
-					user.setLocked(true);
+					user.setIsLocked(true);
 					user.setLockedDate(new Date());
 				}
 				user.setLoginFailureCount(loginFailureCount);
-				user.setModifyTime(new Date());
 				userService.update(user);
 				throw new IncorrectCredentialsException();
 			}
 			user.setLoginIp(ip);
 			user.setLoginDate(new Date());
 			user.setLoginFailureCount(0);
-			user.setModifyTime(new Date());
 			userService.update(user);
 			return new SimpleAuthenticationInfo(new Principal(user.getId(), username, user.getName()), password, getName());
 		}
@@ -111,12 +108,8 @@ public class AuthenticationRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 		User user = (User) principals.getPrimaryPrincipal();
-		for(Role role:user.getRoleList()){
-			authorizationInfo.addRole(role.getRole());
-			for(Permission permission:role.getPermissions()){
-				authorizationInfo.addStringPermission(permission.getPermission());
-			}
-		}
+		authorizationInfo.addRoles(userService.findUserRoles(user.getId()));
+		authorizationInfo.addStringPermissions(userService.findUserPermissions(user.getId()));
 		return authorizationInfo;
 	}
 

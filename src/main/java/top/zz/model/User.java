@@ -2,29 +2,36 @@ package top.zz.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
- * Created by X-man on 2017/3/31.
+ * @author 
  */
 public class User implements Serializable {
-
-    private static final long serialVersionUID = 6990792998903360845L;
-
     private Long id;
-    private String username;
-    private String name;
-    private String password;
-    private String salt;
+
     private Date createTime;
+
     private Boolean isEnabled;
+
     private Boolean isLocked;
-    private Integer loginFailureCount;
+
     private Date lockedDate;
+
     private Date loginDate;
+
+    private Integer loginFailureCount;
+
     private String loginIp;
-    private Date modifyTime;
-    private List<Role> roleList;
+
+    private String name;
+
+    private String password;
+
+    private String salt;
+
+    private String username;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;
@@ -34,12 +41,60 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Boolean getIsEnabled() {
+        return isEnabled;
+    }
+
+    public void setIsEnabled(Boolean isEnabled) {
+        this.isEnabled = isEnabled;
+    }
+
+    public Boolean getIsLocked() {
+        return isLocked;
+    }
+
+    public void setIsLocked(Boolean isLocked) {
+        this.isLocked = isLocked;
+    }
+
+    public Date getLockedDate() {
+        return lockedDate;
+    }
+
+    public void setLockedDate(Date lockedDate) {
+        this.lockedDate = lockedDate;
+    }
+
+    public Date getLoginDate() {
+        return loginDate;
+    }
+
+    public void setLoginDate(Date loginDate) {
+        this.loginDate = loginDate;
+    }
+
+    public Integer getLoginFailureCount() {
+        return loginFailureCount;
+    }
+
+    public void setLoginFailureCount(Integer loginFailureCount) {
+        this.loginFailureCount = loginFailureCount;
+    }
+
+    public String getLoginIp() {
+        return loginIp;
+    }
+
+    public void setLoginIp(String loginIp) {
+        this.loginIp = loginIp;
     }
 
     public String getName() {
@@ -66,79 +121,11 @@ public class User implements Serializable {
         this.salt = salt;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Boolean getEnabled() {
-        return isEnabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        isEnabled = enabled;
-    }
-
-    public Boolean getLocked() {
-        return isLocked;
-    }
-
-    public void setLocked(Boolean locked) {
-        isLocked = locked;
-    }
-
-    public Integer getLoginFailureCount() {
-        return loginFailureCount;
-    }
-
-    public void setLoginFailureCount(Integer loginFailureCount) {
-        this.loginFailureCount = loginFailureCount;
-    }
-
-    public Date getLockedDate() {
-        return lockedDate;
-    }
-
-    public void setLockedDate(Date lockedDate) {
-        this.lockedDate = lockedDate;
-    }
-
-    public Date getLoginDate() {
-        return loginDate;
-    }
-
-    public void setLoginDate(Date loginDate) {
-        this.loginDate = loginDate;
-    }
-
-    public String getLoginIp() {
-        return loginIp;
-    }
-
-    public void setLoginIp(String loginIp) {
-        this.loginIp = loginIp;
-    }
-
-    public List<Role> getRoleList() {
-        return roleList;
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public void setRoleList(List<Role> roleList) {
-        this.roleList = roleList;
-    }
-
-    public String getCredentialsSalt(){
-        return this.username+this.salt;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

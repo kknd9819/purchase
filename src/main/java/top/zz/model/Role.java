@@ -1,24 +1,20 @@
 package top.zz.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
- * Created by X-man on 2017/3/31.
+ * @author 
  */
 public class Role implements Serializable {
+    private Long id;
 
-    private static final long serialVersionUID = -253625885561218068L;
+    private Boolean available;
 
-    private Long id; // 编号
-    private String role; // 角色标识程序中判断使用,如"admin",这个是唯一的:
-    private String description; // 角色描述,UI界面显示使用
+    private String description;
 
-    //角色 -- 权限关系：多对多关系;
-    private List<Permission> permissions;
+    private String role;
 
-    // 用户 - 角色关系定义;
-    private List<User> users;// 一个角色对应多个用户
+    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;
@@ -28,12 +24,12 @@ public class Role implements Serializable {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public Boolean getAvailable() {
+        return available;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
     public String getDescription() {
@@ -44,19 +40,11 @@ public class Role implements Serializable {
         this.description = description;
     }
 
-    public List<Permission> getPermissions() {
-        return permissions;
+    public String getRole() {
+        return role;
     }
 
-    public void setPermissions(List<Permission> permissions) {
-        this.permissions = permissions;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
