@@ -27,7 +27,7 @@ if (rsaService != null) {
 	RSAPublicKey publicKey = rsaService.generateKey(request);
 	String modulus = AES64.encodeBase64String(publicKey.getModulus().toByteArray());
 	String exponent = AES64.encodeBase64String(publicKey.getPublicExponent().toByteArray());
-
+	
 	String message = null;
 	String loginFailure = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
 	if (loginFailure != null) {
@@ -46,7 +46,6 @@ if (rsaService != null) {
 		}
 		request.setAttribute("message", message);
 	}
-}
 %>
 <title>云生源登录后台</title>
 <meta http-equiv="expires" content="0" />
@@ -55,20 +54,20 @@ if (rsaService != null) {
 <meta name="author" content="生源科技" />
 <meta name="copyright" content="生源科技" />
  
-<link rel="stylesheet" href="/resources/css/login.css">
-<link rel="stylesheet" href="/resources/common/jqueryeasyui/themes/default/easyui.css">
+<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="/common/jqueryeasyui/themes/default/easyui.css">
 
-<script type="text/javascript" src="/resources/common/jquery/jquery.js"></script>
-<script type="text/javascript" src="/resources/common/jqueryeasyui/js/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="/resources/common/jqueryeasyui/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/common/jquery/jquery.js"></script>
+<script type="text/javascript" src="/common/jqueryeasyui/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/common/jqueryeasyui/js/easyui-lang-zh_CN.js"></script>
  
 	
-<script type="text/javascript" src="/resources/common/login/jsbn.js"></script>
-<script type="text/javascript" src="/resources/common/login/prng4.js"></script>
-<script type="text/javascript" src="/resources/common/login/rng.js"></script>
-<script type="text/javascript" src="/resources/common/login/rsa.js"></script>
-<script type="text/javascript" src="/resources/common/login/base64.js"></script>
-<script type="text/javascript" src="/resources/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/common/login/jsbn.js"></script>
+<script type="text/javascript" src="/common/login/prng4.js"></script>
+<script type="text/javascript" src="/common/login/rng.js"></script>
+<script type="text/javascript" src="/common/login/rsa.js"></script>
+<script type="text/javascript" src="/common/login/base64.js"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js"></script>
  
 <script type="text/javascript">
 	$().ready( function() {
